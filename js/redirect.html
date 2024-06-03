@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <title>リダイレクトしています</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16449754898"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-16449754898');
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKYEWCQSTX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-SKYEWCQSTX');
+  </script>
+
+  <style>
+    .loading_box {
+      padding: 20px;
+      border-radius: 20px;
+      border: 4px solid #FEEAEA;
+      margin: 30px auto 0;
+      text-align: center;
+    }
+
+    .loading-dot {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .loading-dot .dot {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .loading-dot .dot:before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 15%;
+      height: 15%;
+      background-color: #FEEAEA;
+      border-radius: 100%;
+      animation-name: dotFadeDelay;
+      animation-duration: 1.2s;
+      animation-iteration-count: infinite;
+    }
+
+    .loading-dot .dot2 {
+      transform: rotate(30deg);
+    }
+
+    .loading-dot .dot3 {
+      transform: rotate(60deg);
+    }
+
+    .loading-dot .dot4 {
+      transform: rotate(90deg);
+    }
+
+    .loading-dot .dot5 {
+      transform: rotate(120deg);
+    }
+
+    .loading-dot .dot6 {
+      transform: rotate(150deg);
+    }
+
+    .loading-dot .dot7 {
+      transform: rotate(180deg);
+    }
+
+    .loading-dot .dot8 {
+      transform: rotate(210deg);
+    }
+
+    .loading-dot .dot9 {
+      transform: rotate(240deg);
+    }
+
+    .loading-dot .dot10 {
+      transform: rotate(270deg);
+    }
+
+    .loading-dot .dot11 {
+      transform: rotate(300deg);
+    }
+
+    .loading-dot .dot12 {
+      transform: rotate(330deg);
+    }
+
+    .loading-dot .dot2:before {
+      animation-delay: -1.1s;
+    }
+
+    .loading-dot .dot3:before {
+      animation-delay: -1s;
+    }
+
+    .loading-dot .dot4:before {
+      animation-delay: -0.9s;
+    }
+
+    .loading-dot .dot5:before {
+      animation-delay: -0.8s;
+    }
+
+    .loading-dot .dot6:before {
+      animation-delay: -0.7s;
+    }
+
+    .loading-dot .dot7:before {
+      animation-delay: -0.6s;
+    }
+
+    .loading-dot .dot8:before {
+      animation-delay: -0.5s;
+    }
+
+    .loading-dot .dot9:before {
+      animation-delay: -0.4s;
+    }
+
+    .loading-dot .dot10:before {
+      animation-delay: -0.3s;
+    }
+
+    .loading-dot .dot11:before {
+      animation-delay: -0.2s;
+    }
+
+    .loading-dot .dot12:before {
+      animation-delay: -0.1s;
+    }
+
+    @keyframes dotFadeDelay {
+
+      0%,
+      39%,
+      100% {
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 1;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div style="max-width: 800px;margin:auto;">
+    <div class="loading_box">
+      <div class="loading-dot">
+        <div class="dot1 dot"></div>
+        <div class="dot2 dot"></div>
+        <div class="dot3 dot"></div>
+        <div class="dot4 dot"></div>
+        <div class="dot5 dot"></div>
+        <div class="dot6 dot"></div>
+        <div class="dot7 dot"></div>
+        <div class="dot8 dot"></div>
+        <div class="dot9 dot"></div>
+        <div class="dot10 dot"></div>
+        <div class="dot11 dot"></div>
+        <div class="dot12 dot"></div>
+      </div>
+
+      <p>
+        現在注文殺到中のため、サイトが<br class="sp">混み合っております。<br class="sp"><br>
+        移動しない場合は<a href="" id="toLink">コチラ</a>を<br class="sp">クリックしてください。
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const WAIT_TIME = 1; // ここを修正（秒）
+
+    // const clickedDataset = localStorage.getItem('clickedDataset');
+    // const clickedDataObj = JSON.parse(clickedDataset);
+    // const suid = localStorage.getItem('suid');
+    // const idObj = JSON.parse(suid);
+    // const url = new URL(location.href);
+
+    const clickedDataset = localStorage.getItem('clickedDataset');
+    const clickedDataObj = clickedDataset ? JSON.parse(clickedDataset) : {};
+    const suid = localStorage.getItem('suid');
+    const idObj = suid ? JSON.parse(suid) : {};
+    const url = new URL(location.href);
+
+    for (const key in clickedDataObj) {
+      if (key === 'toLink') {
+        document.getElementById('toLink').href = clickedDataObj.toLink;
+      } else {
+        url.searchParams.set(key, clickedDataObj[key]);
+      }
+    }
+    url.searchParams.set(Object.keys(idObj)[0], Object.values(idObj)[0]);
+    history.replaceState(null, null, url);
+
+    console.log(clickedDataObj.toLink);
+
+    setTimeout(() => {
+      location.href = clickedDataObj.toLink;
+    }, WAIT_TIME * 1000);
+
+  </script>
+</body>
+
+</html>
